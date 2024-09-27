@@ -1,34 +1,16 @@
-import cv2
-import matplotlib
-import matplotlib.pyplot as plt
+# This is a sample Python script.
 
-image = cv2.imread('city.jpeg')
-
-im_rgb = cv2.cvtColor(image,cv2.COLOR_BGR2RGB)
+# Press Shift+F10 to execute it or replace it with your code.
+# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
 
-median_filter_image = cv2.blur(im_rgb,(4,4))
+def print_hi(name):
+    # Use a breakpoint in the code line below to debug your script.
+    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
 
 
-laplace_filtered_image = cv2.Laplacian(median_filter_image,cv2.CV_64F)
+# Press the green button in the gutter to run the script.
+if __name__ == '__main__':
+    print_hi('PyCharm')
 
-
-plt.figure(figsize=(15,5))
-
-plt.subplot(1,3,1)
-plt.imshow(image)
-plt.title("Orijinal Resim")
-plt.axis("off")
-
-plt.subplot(1,3,2)
-plt.imshow(median_filter_image)
-plt.title("Orijinal Resme Medyan Filresi Uygulanmis Resim")
-plt.axis("off")
-
-plt.subplot(1,3,3)
-plt.imshow(laplace_filtered_image)
-plt.title("Medyan filtresi Uygulanmis Resme Laplas Filtresi Uygulanmis Hali")
-plt.axis("off")
-
-
-plt.show()
+# See PyCharm help at https://www.jetbrains.com/help/pycharm/
