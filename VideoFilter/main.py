@@ -1,6 +1,5 @@
 import cv2
 import numpy
-import matplotlib
 
 kamera = cv2.VideoCapture(0)
 
