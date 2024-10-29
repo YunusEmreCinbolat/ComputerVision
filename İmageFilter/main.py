@@ -1,33 +1,39 @@
-import cv2
-import matplotlib.pyplot as plt
+# Gerekli kütüphaneleri içe aktarıyoruz
+import cv2  # Görüntü işleme işlemleri için OpenCV
+import matplotlib.pyplot as plt  # Görüntüyü grafiksel olarak göstermek için Matplotlib
 
-image = cv2.imread('city.jpeg')
+# Görüntüyü yüklüyoruz
+image = cv2.imread('city.jpeg')  # 'city.jpeg' dosyasını yüklüyor
 
-im_rgb = cv2.cvtColor(image,cv2.COLOR_BGR2RGB)
+# BGR renk uzayından RGB'ye dönüştürüyoruz
+im_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)  # OpenCV varsayılan olarak BGR formatında görüntü okur, bu yüzden RGB'ye dönüştürüyoruz
 
+# Medyan filtre uyguluyoruz
+median_filter_image = cv2.blur(im_rgb, (4,4))  # 4x4 boyutunda medyan filtre uygulayarak görüntüyü yumuşatıyoruz
 
-median_filter_image = cv2.blur(im_rgb,(4,4))
+# Laplace filtresi uyguluyoruz
+laplace_filtered_image = cv2.Laplacian(median_filter_image, cv2.CV_64F)  # Kenar tespiti için Laplace filtresi uyguluyoruz
 
-
-laplace_filtered_image = cv2.Laplacian(median_filter_image,cv2.CV_64F)
-
-
+# Grafik için figür boyutunu ayarlıyoruz
 plt.figure(figsize=(15,5))
 
-plt.subplot(1,3,1)
-plt.imshow(image)
-plt.title("Orijinal Resim")
-plt.axis("off")
+# Orijinal resmi gösteriyoruz
+plt.subplot(1, 3, 1)  # 1 satır, 3 sütunlu gridin ilk bölümü
+plt.imshow(image)  # Orijinal resmi gösteriyoruz
+plt.title("Orijinal Resim")  # Başlık ekliyoruz
+plt.axis("off")  # Eksenleri gizliyoruz
 
-plt.subplot(1,3,2)
-plt.imshow(median_filter_image)
-plt.title("Orijinal Resme Medyan Filresi Uygulanmis Resim")
-plt.axis("off")
+# Medyan filtre uygulanmış resmi gösteriyoruz
+plt.subplot(1, 3, 2)  # 1 satır, 3 sütunlu gridin ikinci bölümü
+plt.imshow(median_filter_image)  # Medyan filtre uygulanmış resmi gösteriyoruz
+plt.title("Orijinal Resme Medyan Filresi Uygulanmis Resim")  # Başlık ekliyoruz
+plt.axis("off")  # Eksenleri gizliyoruz
 
-plt.subplot(1,3,3)
-plt.imshow(laplace_filtered_image)
-plt.title("Medyan filtresi Uygulanmis Resme Laplas Filtresi Uygulanmis Hali")
-plt.axis("off")
+# Laplace filtresi uygulanmış resmi gösteriyoruz
+plt.subplot(1, 3, 3)  # 1 satır, 3 sütunlu gridin üçüncü bölümü
+plt.imshow(laplace_filtered_image)  # Laplace filtresi uygulanmış resmi gösteriyoruz
+plt.title("Medyan Filtresi Uygulanmis Resme Laplas Filtresi Uygulanmis Hali")  # Başlık ekliyoruz
+plt.axis("off")  # Eksenleri gizliyoruz
 
-
-plt.show()
+# Grafiği gösteriyoruz
+plt.show()  # Tüm görüntüleri tek bir figürde gösteriyoruz
