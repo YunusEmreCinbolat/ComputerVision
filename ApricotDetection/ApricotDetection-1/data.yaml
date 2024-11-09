@@ -1,0 +1,14 @@
+names:
+- Kayisi
+- Kayisi Cekirdegi
+- Kayisi Yapragi
+nc: 3
+roboflow:
+  license: CC BY 4.0
+  project: apricotdetection
+  url: https://universe.roboflow.com/imagedetection-migfd/apricotdetection/dataset/1
+  version: 1
+  workspace: imagedetection-migfd
+test: ../test/images
+train: ../train/images
+val: ../valid/images
